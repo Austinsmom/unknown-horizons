@@ -67,6 +67,7 @@ def get_minimap_color(world_coords, world, island_color, water_color):
 		color = water_color
 	return color
 
+
 def iter_minimap_points_colors(location, world, island_color, water_color):
 	"""Return an iterator over the pixels of a minimap of the given world.
 
@@ -189,7 +190,6 @@ class Minimap:
 			SettingChanged.subscribe(self._on_setting_changed)
 
 		self.transform = None
-
 
 	def end(self):
 		self.disable()
@@ -619,7 +619,6 @@ class Minimap:
 		# resizeImage also means draw
 		self.minimap_image.rendertarget.resizeImage(name, p, img, new_width, new_height)
 
-
 	def update_rotation(self):
 		# ensure the minimap rotation matches the main view rotation
 		self.transform.set_rotation(self.view.cam.getRotation())
@@ -627,7 +626,6 @@ class Minimap:
 
 	def _get_rotation_setting(self):
 		return self.use_rotation and self._rotation_setting
-
 
 	def _on_setting_changed(self, message):
 		if message.setting_name == "MinimapRotation":
@@ -706,9 +704,7 @@ class _MinimapTransform:
 		x = x_ + self.world_dimensions.center.x
 		y = y_ + self.world_dimensions.center.y
 
-
 		return (int(x), int(y))
-
 
 	def _update_parameters(self):
 		""" Update the transformation parameters.
@@ -723,9 +719,6 @@ class _MinimapTransform:
 		self._world_minimap_ratio_x = self.location.width / self.world_dimensions.width * self._scale_correction
 		self._world_minimap_ratio_y = self.location.height / self.world_dimensions.height * self._scale_correction
 		self.world_to_minimap_ratio = (self._world_minimap_ratio_x, self._world_minimap_ratio_y)
-
-
-
 
 	def _get_rotation(self):
 		# keep track of rotation at any time, but only apply
